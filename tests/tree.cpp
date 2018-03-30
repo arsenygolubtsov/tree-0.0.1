@@ -30,7 +30,7 @@ TEST_CASE("insert and print tree")
 	REQUIRE( ostream.str() == result );
 } 
 
-TEST_CASE("finding tree")
+TEST_CASE("find tree")
 {
 	tree_t tree;
 	std::string input1{"+2\n"};
