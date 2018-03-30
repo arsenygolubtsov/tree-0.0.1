@@ -16,7 +16,7 @@ public:
 	tree_t()
 	{
         root_ = nullptr;
-    }
+        }
 	
     void insert(int value)
      {
@@ -143,7 +143,7 @@ public:
        {
 	       Delete(root_);
        }
-    }
+   }
 };
 
 bool read(tree_t & tree, std::istream & stream)
