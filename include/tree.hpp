@@ -115,4 +115,62 @@ public:
             i--;
         }
     }
+
+   node_t * root() const
+   {
+          return root_;
+   }
+    
+   void Delete(node_t * ptr)
+   {
+       if (ptr != nullptr) 
+       {
+	   if (ptr->right)
+	   {
+	    	   Delete(ptr->right);
+           }
+           if (ptr->left)
+           {
+	    	   Delete(ptr->left);
+           }
+	   delete ptr;
+      }
+   }
+	
+   ~tree_t ()
+   {
+       if( root_ != nullptr) 
+       {
+	       Delete(root_);
+       }
+    }
+};
+
+bool read(tree_t & tree, std::istream & stream)
+{
+    char op;
+    int value;
+    if( stream >> op && ( op == '=' || op == '+' || op == '?' || op == 'q'))
+    {
+	if (op == 'q')
+	{
+	return false;
+    	}
+    	else if (op == '=')
+    	{
+	    tree.print(std::cout, tree.root(), 1);
+	    }
+    	else if ((op == '+' || op == '?') && stream >> value)
+    	{
+	    if (op == '+')
+	    {
+		tree.insert(value);
+	    }
+	      else if (op == '?')
+	      {
+		      std::cout << tree.find(value) << std::endl;
+	      }
+        }
+    }
+     return true;
 }
